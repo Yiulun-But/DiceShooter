@@ -16,7 +16,7 @@ const level = {
 }
 
 const die_spacing = 1.2
-@onready var dice = preload("res://die.tscn")
+@onready var dice = preload("res://scenes/die.tscn")
 
 var bgm
 var target_pos = position
