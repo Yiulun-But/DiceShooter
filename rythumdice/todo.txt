@@ -1,0 +1,24 @@
+Important features:
+	- make scoring system
+	- make rank system
+	
+Game Feel:
+	- allow for late hits
+	- communicate hit time more clearly
+	- communicate hits on subdivisions
+	- make hold notes (dice rolling along a track?)
+	
+Polish:
+	- coherent visual design
+	- add JUICE
+	- main menu 
+		- rotatable dice for reference in background
+	- leaderboard?
+	- settings for hit offset, etc.
+	- put dice in a 3d ring instead of a line?
+	
+Content:
+	- make several songs
+	- chart the songs (make into levels)
+	- simple levels to teach concepts
+	- harder levels to test skill
