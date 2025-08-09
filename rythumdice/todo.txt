@@ -1,12 +1,13 @@
 Important features:
 	- make scoring system
-	- make rank system
+	- make ranking system
 	
 Game Feel:
 	- allow for late hits
 	- communicate hit time more clearly
 	- communicate hits on subdivisions
 	- make hold notes (dice rolling along a track?)
+	- feedback about hit accuracy (change color based on precision? missed notes fade to dark shade and rotate along axis out of screen)
 	
 Polish:
 	- coherent visual design
