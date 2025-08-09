@@ -1,27 +1,47 @@
 extends Node3D
 
-const level = [
-	1, 1, 1, 1, 5, 5, 5, 5, 
-	5, 5, 5, 5, 5, 5, 5, 5,
-	5, 2, 5, 2, 5, 2, 5, 2,
-	5, 2, 5, 2, 5, 2, 5, 2,
-	6, 2, 6, 2, 6, 2, 6, 2,
-	6, 2, 6, 2, 6, 2, 6, 2,
-	6, 2, 6, 2, 6, 2, 6, 2,
-	6, 2, 6, 2, 6, 2, 6, 2,
-]
+const level = {
+	"bpm": 120,
+	"audio": "res://audio/basic_song.wav",
+	"dice": [
+		1, 1, 1, 1, 5, 5, 5, 5, 
+		5, 5, 5, 5, 5, 5, 5, 5,
+		5, 2, 5, 2, 5, 2, 5, 2,
+		5, 2, 5, 2, 5, 2, 5, 2,
+		6, 2, 6, 2, 6, 2, 6, 2,
+		6, 2, 6, 2, 6, 2, 6, 2,
+		6, 2, 6, 2, 6, 2, 6, 2,
+		6, 2, 6, 2, 6, 2, 6, 2,
+	]
+}
+
 const die_spacing = 1.2
 @onready var dice = preload("res://die.tscn")
 
 var bgm
 var target_pos = position
 
+func timings_from_beatmap(beatmap):
+	var timings = []
+	var beat_length_s = 60. / beatmap.bpm
+	var dice_sequence = beatmap.dice
+	
+	for i in range(dice_sequence.size()):
+		# in future will handle different beat divisions here
+		timings.append(i * beat_length_s)
+
 func _ready():
 	add_to_group("levelgen")
-	bgm = get_tree().get_nodes_in_group("bgm")[0]
 	
+	# setup bgm node to handle note timings
+	bgm = get_tree().get_nodes_in_group("bgm")[0]
+	bgm.tempo = level.bpm
+	bgm.audio = level.audio
+	
+	# generate dice sequence
 	var prev_die = null
-	for i in range(len(level)):
+	var dice_sequence = level.dice
+	for i in range(dice_sequence.size()):
 		var die = dice.instantiate()
 		
 		if prev_die != null: prev_die.next = die
