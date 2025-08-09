@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=3 uid="uid://8rrqwhgre17n"]
+
+[ext_resource type="Script" uid="uid://bb7qpv5srecjp" path="res://die.gd" id="1_fl3nv"]
+[ext_resource type="Texture2D" uid="uid://dofgb3biiltap" path="res://textures/dicefaces5.png" id="2_183hu"]
+[ext_resource type="Texture2D" uid="uid://dkgvd1c7ois0m" path="res://textures/dicefaces1.png" id="2_gxo0y"]
+[ext_resource type="Texture2D" uid="uid://dx63tha3ko1ko" path="res://textures/dicefaces2.png" id="2_muu1c"]
+[ext_resource type="Texture2D" uid="uid://67lrorkj2258" path="res://textures/dicefaces6.png" id="4_u0y2o"]
+[ext_resource type="Texture2D" uid="uid://c5r55qiw2k5vf" path="res://textures/dicefaces3.png" id="5_snfj7"]
+[ext_resource type="Texture2D" uid="uid://cooo658k4xkeq" path="res://textures/dicefaces4.png" id="6_85j3g"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lbo6s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxo0y"]
+shading_mode = 0
+albedo_texture = ExtResource("2_gxo0y")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv0h0"]
+shading_mode = 0
+albedo_texture = ExtResource("2_muu1c")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fx4x"]
+shading_mode = 0
+albedo_texture = ExtResource("5_snfj7")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5qhq"]
+shading_mode = 0
+albedo_texture = ExtResource("6_85j3g")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3244"]
+shading_mode = 0
+albedo_texture = ExtResource("2_183hu")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l438t"]
+shading_mode = 0
+albedo_texture = ExtResource("4_u0y2o")
+texture_filter = 0
+
+[node name="die" type="Node3D"]
+script = ExtResource("1_fl3nv")
+
+[node name="1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_gxo0y")
+metadata/_edit_lock_ = true
+
+[node name="2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_bv0h0")
+metadata/_edit_lock_ = true
+
+[node name="3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 0)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_8fx4x")
+metadata/_edit_lock_ = true
+
+[node name="4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5qhq")
+metadata/_edit_lock_ = true
+
+[node name="5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_q3244")
+metadata/_edit_lock_ = true
+
+[node name="6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("QuadMesh_lbo6s")
+surface_material_override/0 = SubResource("StandardMaterial3D_l438t")
+metadata/_edit_lock_ = true
