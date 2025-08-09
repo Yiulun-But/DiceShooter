@@ -37,6 +37,7 @@ func _ready():
 	bgm = get_tree().get_nodes_in_group("bgm")[0]
 	bgm.tempo = level.bpm
 	bgm.audio = level.audio
+	bgm.start_song()
 	
 	# generate dice sequence
 	var prev_die = null
@@ -46,7 +47,7 @@ func _ready():
 		
 		if prev_die != null: prev_die.next = die
 		
-		die.spawn_face = level[i]
+		die.spawn_face = dice_sequence[i]
 		bgm.connect("on_beat", Callable(die, "_on_beat"))
 		add_child(die)
 		
