@@ -1,25 +1,23 @@
 extends Node
+signal  on_beat
 
-signal on_beat
-
-var tempo: int = 120
+var tempo
 var audio
-@onready var song = $song
-@onready var beat_timer = $beat
+var timings
+var next_beat = 1
 
-var beat_length_s = 60. / tempo
+@onready var song = $song
 
 func _ready():
 	add_to_group("bgm")
-
-func _on_beat_timeout():
-	emit_signal("on_beat")
 	
 func start_song():
-	beat_timer.wait_time = beat_length_s
-	beat_timer.one_shot = false
-	beat_timer.start()
-	
 	var audio_stream = load(audio)
 	song.stream = audio_stream
 	song.play()
+
+func _process(_delta):
+	var song_elapsed = song.get_playback_position()
+	if next_beat < timings.size() and song_elapsed >= timings[next_beat]:
+		emit_signal("on_beat")
+		next_beat += 1

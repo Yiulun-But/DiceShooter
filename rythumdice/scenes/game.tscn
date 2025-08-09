@@ -19,8 +19,6 @@ script = ExtResource("2_iywne")
 [node name="song" type="AudioStreamPlayer" parent="bgm"]
 stream = ExtResource("3_p57ef")
 
-[node name="beat" type="Timer" parent="bgm"]
-
 [node name="level_generator" parent="." instance=ExtResource("4_u5sy4")]
 level = "res://levels/test_song.json"
 metadata/_edit_lock_ = true
@@ -28,5 +26,3 @@ metadata/_edit_lock_ = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_7jktm")
-
-[connection signal="timeout" from="bgm/beat" to="bgm" method="_on_beat_timeout"]
