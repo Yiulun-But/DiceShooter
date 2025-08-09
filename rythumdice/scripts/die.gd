@@ -6,8 +6,10 @@ extends Node3D
 var finished = false
 var dicepos
 var next
+var camera
 
 var target_rot : Quaternion
+const ROT_SPEED = .3
 
 var rot_angle = deg_to_rad(90)
 var face_rotations = {
@@ -26,17 +28,30 @@ func move_to_next():
 		
 		await get_tree().process_frame
 		if next: next.active = true
+		
+func rot(axis, angle):
+	var rotation_delta = Quaternion(axis, angle).normalized()
+	target_rot = rotation_delta * target_rot
 
 func _ready():
-	rotation = face_rotations[spawn_face]
-	dicepos  = get_tree().get_nodes_in_group("levelgen")[0]
+	camera     = get_tree().get_nodes_in_group("camera"  )[0]
+	dicepos    = get_tree().get_nodes_in_group("levelgen")[0]
+	
+	rotation   = face_rotations[spawn_face]
+	target_rot = global_transform.basis.get_rotation_quaternion()
 
-func _process(_delta):	
+func _process(_delta):
+	# interpolate rotation
+	var current_rot = global_transform.basis.get_rotation_quaternion()
+	current_rot     = current_rot.slerp(target_rot, ROT_SPEED)
+	transform.basis = Basis(current_rot)
+	
 	if active:
-		if Input.is_action_just_pressed("up"   ): rotate_x( rot_angle)
-		if Input.is_action_just_pressed("down" ): rotate_x(-rot_angle)
-		if Input.is_action_just_pressed("right"): rotate_z( rot_angle)
-		if Input.is_action_just_pressed("left" ): rotate_z(-rot_angle)
+		var camera_basis = camera.global_transform.basis
+		if Input.is_action_just_pressed("up"   ): rot(camera_basis.x, -rot_angle)
+		if Input.is_action_just_pressed("down" ): rot(camera_basis.x,  rot_angle)
+		if Input.is_action_just_pressed("right"): rot(camera_basis.y,  rot_angle)
+		if Input.is_action_just_pressed("left" ): rot(camera_basis.y, -rot_angle)
 
 func _on_beat():
 	move_to_next()
