@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://8iotcpkkx44i"]
+
+[ext_resource type="Texture2D" uid="uid://btuuk18ttxok6" path="res://res/imgs/heart.png" id="1_cixvg"]
+[ext_resource type="Script" uid="uid://cnt8gtq5crmyw" path="res://heart.gd" id="2_7p8dj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7p8dj"]
+radius = 37.3395
+
+[node name="Heart" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.591346, 0.62766)
+script = ExtResource("2_7p8dj")
+
+[node name="Heart" type="Sprite2D" parent="."]
+texture = ExtResource("1_cixvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7p8dj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
