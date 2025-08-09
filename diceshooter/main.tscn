@@ -1,0 +1,144 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1gvrcxweh4fq"]
+
+[ext_resource type="Script" uid="uid://dnxeh5bjbiydk" path="res://grid_manager.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cr7nahb205ba7" path="res://player.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dgk7lf2pngxim" path="res://dice_roller.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://x43wcjp2ju51" path="res://enemy.gd" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://sy7hntup1nah" path="res://stats_panel.gd" id="4_1bvp3"]
+
+[sub_resource type="Gradient" id="Gradient_lquwl"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7mycd"]
+gradient = SubResource("Gradient_lquwl")
+width = 48
+height = 48
+
+[sub_resource type="Gradient" id="Gradient_0xm2m"]
+colors = PackedColorArray(0.636937, 0, 0.169694, 1, 0.643325, 0.00702726, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2yge"]
+gradient = SubResource("Gradient_0xm2m")
+width = 48
+height = 48
+
+[node name="main" type="Node2D"]
+
+[node name="GridManager" type="Node2D" parent="."]
+script = ExtResource("1_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 256)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DiceRoller" type="Control" parent="UI" groups=["dice_roller"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_h2yge")
+
+[node name="RollButton" type="Button" parent="UI/DiceRoller"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DiceResult" type="Label" parent="UI/DiceRoller"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DiceDisplay" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="StatsPanel" type="Control" parent="UI" groups=["stats_panel"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_1bvp3")
+
+[node name="StatsLabel" type="Label" parent="UI/StatsPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AttackStat" type="Control" parent="UI/StatsPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AttackLabel" type="Label" parent="UI/StatsPanel/AttackStat"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AttackValue" type="Label" parent="UI/StatsPanel/AttackStat"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AttackButton" type="Button" parent="UI/StatsPanel/AttackStat"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="MovementStat" type="Control" parent="UI/StatsPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MovementLabel" type="Label" parent="UI/StatsPanel/MovementStat"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MovementValue" type="Label" parent="UI/StatsPanel/MovementStat"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MovementButton" type="Button" parent="UI/StatsPanel/MovementStat"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="DefenseStat" type="Control" parent="UI/StatsPanel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DefenseLabel" type="Label" parent="UI/StatsPanel/DefenseStat"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DefenseValue" type="Label" parent="UI/StatsPanel/DefenseStat"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DefenseButton" type="Button" parent="UI/StatsPanel/DefenseStat"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Units" type="Node2D" parent="."]
+
+[node name="PlayerUnits" type="Node2D" parent="Units"]
+
+[node name="Player" type="Node2D" parent="Units/PlayerUnits" groups=["player"]]
+script = ExtResource("2_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Units/PlayerUnits/Player"]
+texture = SubResource("GradientTexture2D_7mycd")
+offset = Vector2(-1, 0)
+
+[node name="EnemyUnits" type="Node2D" parent="Units"]
+
+[node name="Enemy" type="Node2D" parent="Units/EnemyUnits" groups=["enemy"]]
+script = ExtResource("3_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Units/EnemyUnits/Enemy"]
+texture = SubResource("GradientTexture2D_h2yge")
+offset = Vector2(-1, 0)
+
+[node name="HealthLabel" type="Label" parent="Units/EnemyUnits/Enemy"]
+offset_right = 40.0
+offset_bottom = 23.0
