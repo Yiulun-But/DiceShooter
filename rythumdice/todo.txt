@@ -10,6 +10,7 @@ Game Feel:
 	- feedback about hit accuracy (change color based on precision? missed notes fade to dark shade and rotate along axis out of screen)
 	
 Polish:
+	- do a proper count in? (not just red dice)
 	- coherent visual design
 	- add JUICE
 	- main menu 

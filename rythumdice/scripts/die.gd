@@ -11,6 +11,7 @@ var camera
 var target_rot : Quaternion
 const ROT_SPEED = .3
 
+# list of (euclidean) rotations needed for each number to be on top
 var rot_angle = deg_to_rad(90)
 var face_rotations = {
 	1: Vector3(0,           0, 0),
@@ -22,10 +23,12 @@ var face_rotations = {
 }
 
 func move_to_next():
+	# disable controls for this dice and shift over to the next one
 	if active:
-		active   = false
+		active = false
 		dicepos.target_pos.x -= dicepos.die_spacing
 		
+		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
 		if next: next.active = true
 		
@@ -37,6 +40,7 @@ func _ready():
 	camera     = get_tree().get_nodes_in_group("camera"  )[0]
 	dicepos    = get_tree().get_nodes_in_group("levelgen")[0]
 	
+	# rotate so the correct face is up
 	rotation   = face_rotations[spawn_face]
 	target_rot = global_transform.basis.get_rotation_quaternion()
 
@@ -46,6 +50,7 @@ func _process(_delta):
 	current_rot     = current_rot.slerp(target_rot, ROT_SPEED)
 	transform.basis = Basis(current_rot)
 	
+	# controls for rotating the dice
 	if active:
 		var camera_basis = camera.global_transform.basis
 		if Input.is_action_just_pressed("up"   ): rot(camera_basis.x, -rot_angle)
