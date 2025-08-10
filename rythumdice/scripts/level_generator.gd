@@ -8,8 +8,6 @@ var level_data
 var target_pos = position
 const DIE_SPACING = 1.2
 
-var score_inst
-
 func timings_from_beatmap(beatmap):
 	# generates a list of timestamps where each beat hits
 	var timings = []
