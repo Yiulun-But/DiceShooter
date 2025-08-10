@@ -19,6 +19,7 @@ func start_song():
 func _process(_delta):
 	# use timing based on how much of the audio has played
 	var song_elapsed = song.get_playback_position()
+	
 	if next_beat < timings.size() \
 	   and song_elapsed >= timings[next_beat]:
 		# sends a generic signal so UI and other game elements can connect to it and sync to the beat

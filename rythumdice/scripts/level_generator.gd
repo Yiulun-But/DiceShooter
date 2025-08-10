@@ -6,7 +6,9 @@ extends Node3D
 var bgm
 var level_data
 var target_pos = position
-const die_spacing = 1.2
+const DIE_SPACING = 1.2
+
+var score_inst
 
 func timings_from_beatmap(beatmap):
 	# generates a list of timestamps where each beat hits
@@ -42,16 +44,20 @@ func _ready():
 		add_child(die)
 		
 		# move the die to the end of the line
-		die.global_position = Vector3(die_spacing * i, 0, 0)
+		die.global_position = Vector3(DIE_SPACING * i, 0, 0)
 		
 		# activate the first die and connect each one to the next in order
 		if i == 0: die.active = true
 		if prev_die != null: prev_die.next = die
 		prev_die = die
+		
 
 func _process(_delta):
 	# animate movement (move towards target position)
 	position = lerp(position, target_pos, .1)
+
+
+		
 	
 func load_json(file_path):
 	var file = FileAccess.open(file_path, FileAccess.READ)

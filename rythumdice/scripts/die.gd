@@ -26,7 +26,7 @@ func move_to_next():
 	# disable controls for this dice and shift over to the next one
 	if active:
 		active = false
-		dicepos.target_pos.x -= dicepos.die_spacing
+		dicepos.target_pos.x -= dicepos.DIE_SPACING
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
