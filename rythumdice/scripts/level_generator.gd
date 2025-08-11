@@ -1,9 +1,9 @@
 extends Node3D
 
 @export_file("*.json") var level
-@export var new_level_name: String
 @onready var dice = preload("res://scenes/die.tscn")
 
+var new_level_name: String
 var bgm
 var level_data
 var target_pos = position
@@ -47,6 +47,7 @@ func _ready():
 	if level == "res://levels/new_level.json":
 		is_editor = true
 		level_data.dice = [6, 6]
+		new_level_name = level_data.level_name
 	
 	# setup bgm node to handle note timings
 	bgm = get_tree().get_nodes_in_group("bgm")[0]
