@@ -1,18 +1,21 @@
 extends Node3D
 
 @export_file("*.json") var level
-@onready var dice = preload("res://scenes/die.tscn")
+@onready var hitobject = preload("res://scenes/hitobject.tscn")
 
 var bgm
 var level_data
 var target_pos = position
 const die_spacing = 1.2
 
+func note_length(beatmap):
+	return 60. / (beatmap.bpm * beatmap.subdivision)
+
 func timings_from_beatmap(beatmap):
 	# generates a list of timestamps where each beat hits
 	var timings = []
-	var beat_length_s = 60. / beatmap.bpm
-	var dice_sequence = beatmap.dice
+	var beat_length_s = note_length(beatmap)
+	var dice_sequence = beatmap.rows
 	
 	for i in range(dice_sequence.size()):
 		# in future will handle different beat divisions here
@@ -22,32 +25,31 @@ func timings_from_beatmap(beatmap):
 
 func _ready():
 	add_to_group("levelgen")
-	level_data = load_json(level)
+	level_data  = load_json(level)
+	var timings = timings_from_beatmap(level_data)
 	
 	# setup bgm node to handle note timings
 	bgm = get_tree().get_nodes_in_group("bgm")[0]
 	bgm.tempo   = level_data.bpm
 	bgm.audio   = level_data.audio
-	bgm.timings = timings_from_beatmap(level_data)
+	bgm.timings = timings
+	bgm.note_duration = note_length(level_data)
 	bgm.start_song()
 	
-	# generate dice sequence
-	var prev_die = null
-	var dice_sequence = level_data.dice
-	for i in range(dice_sequence.size()):
+	# generate hitobject sequence
+	var hit_sequence = level_data.rows
+	var jump_indexes = level_data.jumps
+	for i in range(hit_sequence.size() - 1):
 		# create the dice and connect them to the beat
-		var die = dice.instantiate()
-		die.spawn_face = dice_sequence[i]
-		bgm.connect("on_beat", Callable(die, "_on_beat"))
-		add_child(die)
+		var row = hit_sequence[i]
+		if row == null: continue
 		
-		# move the die to the end of the line
-		die.global_position = Vector3(die_spacing * i, 0, 0)
+		var hit = hitobject.instantiate()
+		hit.hit_time = timings[i+1]
+		hit.row      = row
 		
-		# activate the first die and connect each one to the next in order
-		if i == 0: die.active = true
-		if prev_die != null: prev_die.next = die
-		prev_die = die
+		if jump_indexes.has(float(i)): hit.is_jump_target = true
+		add_child(hit)
 
 func _process(_delta):
 	# animate movement (move towards target position)

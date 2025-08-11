@@ -1,0 +1,20 @@
+{
+	"bpm": 140,
+	"subdivision": 2,
+	"audio": "res://audio/tetris99.mp3",
+	"rows": [
+		null, null, null, null, 
+		-1.0, null, 
+		0.0, 1.0, 2.0, null, 
+		1.0, 0.0, -1.0, null, 
+		0.0, 1.0, 2.0, null, 
+		1.0, 0.0, -1.0, null, 
+		null, 0.0, 1.0, null, 
+		2.0, null, 
+		1.0, null, 
+		0.0, null, 
+		-1.0, null, 
+		-2.0
+	],
+	"jumps": [4]
+}

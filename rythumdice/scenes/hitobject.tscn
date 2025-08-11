@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6pdm32i5lmkd"]
+
+[ext_resource type="Script" uid="uid://2no7m5121viy" path="res://scripts/hitobject.gd" id="1_oefqk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j742d"]
+size = Vector2(100, 100)
+
+[node name="hitobject" type="Node3D"]
+script = ExtResource("1_oefqk")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+texture = SubResource("PlaceholderTexture2D_j742d")

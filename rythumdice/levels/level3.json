@@ -1,0 +1,18 @@
+{
+	"bpm": 120,
+	"subdivision": 2,
+	"audio": "res://audio/level3.wav",
+	"rows": [
+		-1, null, 
+		-1, 0, 1, null, 
+		0, -1, -2, null,
+		-1, 0, 1, null, 
+		0, -1, -2, null,
+		-1, 0, 1, null, 
+		2, null,
+		1, null, 
+		0, null, 
+		0, null
+	],
+	"jumps": [0, 2, 6, 10, 14, 18, 28]
+}
