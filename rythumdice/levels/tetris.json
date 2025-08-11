@@ -3,7 +3,7 @@
 	"beats_per_die": 1,
 	"audio": "res://audio/tetris99.mp3",
 	"dice": [
-		6, 6, 
+		6, 6, 6, 
 		2, 
 		1, 2, 
 		1, 2, 

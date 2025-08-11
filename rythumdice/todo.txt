@@ -2,6 +2,11 @@ Important features:
 	- make scoring system
 	- make ranking system
 	
+	
+	what way to turn it
+	too fast
+	objective not clear
+	
 Game Feel:
 	- allow for late hits
 	- communicate hit time more clearly
