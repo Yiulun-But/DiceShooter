@@ -40,7 +40,6 @@ func move_to_next():
 		await get_tree().process_frame
 		if next: next.active = true
 
-		
 func is_complete():
 	# check if 6 face normal vector is up
 	var face_normal = Vector3.DOWN # 6 is facing down by default
