@@ -34,7 +34,7 @@ script = ExtResource("2_iywne")
 stream = SubResource("AudioStreamWAV_iywne")
 
 [node name="level_generator" parent="." instance=ExtResource("4_u5sy4")]
-level = "res://levels/tetris2.json"
+level = "res://levels/tetris.json"
 new_level_name = "tetris"
 metadata/_edit_lock_ = true
 
