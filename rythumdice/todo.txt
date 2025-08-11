@@ -7,6 +7,10 @@ Important features:
 	too fast
 	objective not clear
 	
+	instead of gray bar, have a gray circle behind center die that pulses to the beat
+	make score pulse to the beat
+	make center die pulse to the beat/to player input with flash grow effect
+	
 Game Feel:
 	- allow for late hits
 	- communicate hit time more clearly
