@@ -10,6 +10,9 @@ var camera
 
 # signal carries score emits when dice is deactivated
 signal dice_finished(moves: int, facing: int)
+# signal when level is finished
+signal level_finished()
+
 # moves count
 var moves
 
@@ -38,8 +41,11 @@ func move_to_next():
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
-		if next: next.active = true
-
+		if next:
+			next.active = true
+		else:
+			level_finished.emit()
+			
 func is_complete():
 	# check if 6 face normal vector is up
 	var face_normal = Vector3.DOWN # 6 is facing down by default

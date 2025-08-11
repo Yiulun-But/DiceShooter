@@ -7,7 +7,9 @@ const SCORE_PER_BEAT = 60
 const SCORE_PER_BEAT_BONUS = 20
 # score
 var score
-@onready var label: Label3D = $Label3D
+@onready var score_ingame: Label3D = $ScoreIngame
+@onready var score_background: MeshInstance3D = $MeshInstance3D
+@onready var score_final: Label3D = $MeshInstance3D/ScoreFinal
 
 func _ready() -> void:
 	# initialize the score
@@ -20,21 +22,24 @@ func _ready() -> void:
 	# connect signals from all dices
 	for e in get_tree().get_nodes_in_group("dices"):
 		e.dice_finished.connect(_on_dice_finished)
+	# connect level finish signal for last dice
+	get_tree().get_nodes_in_group("dices")[-1].level_finished.connect(_on_level_finished)
 	
 	# initialize score display
-	label.text = "0"
-		
-		
+	score_ingame.text = "0"
 
 func _process(_delta: float) -> void:
-	label.text = str(score)
+	score_ingame.text = str(score)
 	
 func _on_dice_finished(moves: int, facing: bool):
 	if facing:
 		add_score(moves)
-	#print("moves: ", moves, ", facing: ", facing)
 
 func add_score(moves: int):
 	score += SCORE_PER_BEAT
 	if (moves <= 1):
 		score += SCORE_PER_BEAT_BONUS
+
+func _on_level_finished():
+	score_background.visible = true
+	score_final.text = str(score)
