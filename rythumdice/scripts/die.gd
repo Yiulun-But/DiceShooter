@@ -2,6 +2,12 @@ extends Node3D
 
 @export var active: bool = false
 @export var spawn_face: int = 1
+@onready var material1: ShaderMaterial = $"1".get_active_material(0)
+@onready var material2: ShaderMaterial = $"2".get_active_material(0)
+@onready var material3: ShaderMaterial = $"3".get_active_material(0)
+@onready var material4: ShaderMaterial = $"4".get_active_material(0)
+@onready var material5: ShaderMaterial = $"5".get_active_material(0)
+@onready var material6: ShaderMaterial = $"6".get_active_material(0)
 
 var finished = false
 var dicepos
@@ -10,6 +16,8 @@ var camera
 
 var target_rot : Quaternion
 const ROT_SPEED = .3
+var flash_tween: Tween
+var current_flash_material: ShaderMaterial
 
 # list of (euclidean) rotations needed for each number to be on top
 var rot_angle = deg_to_rad(90)
@@ -60,3 +68,35 @@ func _process(_delta):
 
 func _on_beat():
 	move_to_next()
+	
+func set_flash_intensity(value: float):
+	if current_flash_material:
+		current_flash_material.set_shader_parameter("flash_intensity", value)
+	
+func flash_color(color: Color, material: ShaderMaterial, duration: float = 0.3):
+	if flash_tween:
+		flash_tween.kill()
+	
+	# Store which material we're flashing
+	current_flash_material = material
+	
+	# Set the flash color
+	material.set_shader_parameter("flash_color", Vector3(color.r, color.g, color.b))
+	
+	# Animate the flash intensity
+	flash_tween = create_tween()
+	flash_tween.tween_method(set_flash_intensity, 0.0, 1.0, duration * 0.3)
+	flash_tween.tween_method(set_flash_intensity, 1.0, 0.0, duration * 0.7)
+
+# Helper functions to flash specific faces
+func flash_face_1(color: Color = Color.GREEN): flash_color(color, material1)
+func flash_face_2(color: Color = Color.GREEN): flash_color(color, material2)
+func flash_face_3(color: Color = Color.GREEN): flash_color(color, material3)
+func flash_face_4(color: Color = Color.GREEN): flash_color(color, material4)
+func flash_face_5(color: Color = Color.GREEN): flash_color(color, material5)
+func flash_face_6(color: Color = Color.GREEN): flash_color(color, material6)
+
+# Flash the current top face
+func flash_current_face(color: Color = Color.GREEN):
+	var materials = [material1, material2, material3, material4, material5, material6]
+	flash_color(color, materials[spawn_face - 1])

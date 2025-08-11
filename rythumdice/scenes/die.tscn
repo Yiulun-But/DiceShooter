@@ -1,80 +1,115 @@
-[gd_scene load_steps=15 format=3 uid="uid://8rrqwhgre17n"]
+[gd_scene load_steps=21 format=3 uid="uid://8rrqwhgre17n"]
 
 [ext_resource type="Script" uid="uid://bb7qpv5srecjp" path="res://scripts/die.gd" id="1_pg1s8"]
 [ext_resource type="Texture2D" uid="uid://dkgvd1c7ois0m" path="res://textures/dicefaces1.png" id="2_lmrdk"]
+[ext_resource type="Shader" uid="uid://b2pdqltlvfdjb" path="res://scenes/die.gdshader" id="2_yeu2p"]
 [ext_resource type="Texture2D" uid="uid://dx63tha3ko1ko" path="res://textures/dicefaces2.png" id="3_yeu2p"]
 [ext_resource type="Texture2D" uid="uid://c5r55qiw2k5vf" path="res://textures/dicefaces3.png" id="4_4ryx6"]
 [ext_resource type="Texture2D" uid="uid://cooo658k4xkeq" path="res://textures/dicefaces4.png" id="5_3q1uh"]
 [ext_resource type="Texture2D" uid="uid://dofgb3biiltap" path="res://textures/dicefaces5.png" id="6_puq3y"]
 [ext_resource type="Texture2D" uid="uid://67lrorkj2258" path="res://textures/dicefaces6.png" id="7_gvult"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_lbo6s"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ryx6"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("2_lmrdk")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.2
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxo0y"]
-shading_mode = 0
-albedo_texture = ExtResource("2_lmrdk")
-texture_filter = 0
+[sub_resource type="QuadMesh" id="QuadMesh_3q1uh"]
+material = SubResource("ShaderMaterial_4ryx6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv0h0"]
-shading_mode = 0
-albedo_texture = ExtResource("3_yeu2p")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmrdk"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("3_yeu2p")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.2
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fx4x"]
-shading_mode = 0
-albedo_texture = ExtResource("4_4ryx6")
-texture_filter = 0
+[sub_resource type="QuadMesh" id="QuadMesh_yeu2p"]
+material = SubResource("ShaderMaterial_lmrdk")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5qhq"]
-shading_mode = 0
-albedo_texture = ExtResource("5_3q1uh")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q1uh"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("4_4ryx6")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.2
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3244"]
-shading_mode = 0
-albedo_texture = ExtResource("6_puq3y")
-texture_filter = 0
+[sub_resource type="QuadMesh" id="QuadMesh_puq3y"]
+material = SubResource("ShaderMaterial_3q1uh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l438t"]
-shading_mode = 0
-albedo_texture = ExtResource("7_gvult")
-texture_filter = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvult"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("5_3q1uh")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.2
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_preyg"]
+material = SubResource("ShaderMaterial_gvult")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_du2hg"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("6_puq3y")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.2
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dkmo3"]
+material = SubResource("ShaderMaterial_du2hg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8fr1h"]
+render_priority = 0
+shader = ExtResource("2_yeu2p")
+shader_parameter/base_texture = ExtResource("7_gvult")
+shader_parameter/white_threshold = 0.8
+shader_parameter/darken_multiplier = 0.5
+shader_parameter/flash_intensity = 0.0
+shader_parameter/flash_color = Color(0, 1, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rsb0l"]
+material = SubResource("ShaderMaterial_8fr1h")
 
 [node name="die" type="Node3D"]
 script = ExtResource("1_pg1s8")
 
 [node name="1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5, 0)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_gxo0y")
+mesh = SubResource("QuadMesh_3q1uh")
 metadata/_edit_lock_ = true
 
 [node name="2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.5)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_bv0h0")
+mesh = SubResource("QuadMesh_yeu2p")
 metadata/_edit_lock_ = true
 
 [node name="3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 0)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_8fx4x")
+mesh = SubResource("QuadMesh_puq3y")
 metadata/_edit_lock_ = true
 
 [node name="4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5, 0, 0)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_g5qhq")
+mesh = SubResource("QuadMesh_preyg")
 metadata/_edit_lock_ = true
 
 [node name="5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_q3244")
+mesh = SubResource("QuadMesh_dkmo3")
 metadata/_edit_lock_ = true
 
 [node name="6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.5, 0)
-mesh = SubResource("QuadMesh_lbo6s")
-surface_material_override/0 = SubResource("StandardMaterial3D_l438t")
+mesh = SubResource("QuadMesh_rsb0l")
 metadata/_edit_lock_ = true

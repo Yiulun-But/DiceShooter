@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgvjn3yy7qyuk"]
+
+[ext_resource type="Script" uid="uid://xsyuwqdw5pky" path="res://test/test.gd" id="1_8a8pi"]
+[ext_resource type="PackedScene" uid="uid://8rrqwhgre17n" path="res://scenes/die.tscn" id="2_65205"]
+[ext_resource type="Script" uid="uid://cq1oi3lby6hjf" path="res://test/testdie.gd" id="3_65205"]
+
+[node name="Test" type="Node3D"]
+transform = Transform3D(0.999895, 0.0116915, -0.00861471, -0.0117036, 0.999931, -0.0013553, 0.00859826, 0.00145599, 0.999962, 0, 0, 0)
+script = ExtResource("1_8a8pi")
+
+[node name="die" parent="." instance=ExtResource("2_65205")]
+script = ExtResource("3_65205")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.93977, 0.341807, 0, -0.341807, 0.93977, 0.77342, 0.815921, 1.79926)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
