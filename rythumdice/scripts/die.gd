@@ -8,6 +8,11 @@ var dicepos
 var next
 var camera
 
+# signal emits when dice is deactivated
+signal dice_finished(moves: int, facing: int)
+# moves count
+var moves
+
 var target_rot : Quaternion
 const ROT_SPEED = .3
 
@@ -28,6 +33,9 @@ func move_to_next():
 		active = false
 		dicepos.target_pos.x -= dicepos.DIE_SPACING
 		
+		# emit the signal
+		dice_finished.emit(moves, 6) # TO BE IMPLEMENTED
+		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
 		if next: next.active = true
@@ -44,6 +52,7 @@ func _ready():
 	rotation   = face_rotations[spawn_face]
 	target_rot = global_transform.basis.get_rotation_quaternion()
 
+	moves = 0
 func _process(_delta):
 	# interpolate rotation
 	var current_rot = global_transform.basis.get_rotation_quaternion()
@@ -53,10 +62,21 @@ func _process(_delta):
 	# controls for rotating the dice
 	if active:
 		var camera_basis = camera.global_transform.basis
-		if Input.is_action_just_pressed("up"   ): rot(camera_basis.x, -rot_angle)
-		if Input.is_action_just_pressed("down" ): rot(camera_basis.x,  rot_angle)
-		if Input.is_action_just_pressed("right"): rot(camera_basis.y,  rot_angle)
-		if Input.is_action_just_pressed("left" ): rot(camera_basis.y, -rot_angle)
+		if Input.is_action_just_pressed("up"   ): 
+			rot(camera_basis.x, -rot_angle)
+			add_move_count()
+		if Input.is_action_just_pressed("down" ): 
+			rot(camera_basis.x,  rot_angle)
+			add_move_count()
+		if Input.is_action_just_pressed("right"): 
+			rot(camera_basis.y,  rot_angle)
+			add_move_count()
+		if Input.is_action_just_pressed("left" ): 
+			rot(camera_basis.y, -rot_angle)
+			add_move_count()
+
+func add_move_count():
+	moves += 1
 
 func _on_beat():
 	move_to_next()

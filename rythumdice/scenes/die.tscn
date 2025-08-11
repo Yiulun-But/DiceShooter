@@ -40,7 +40,7 @@ shading_mode = 0
 albedo_texture = ExtResource("7_gvult")
 texture_filter = 0
 
-[node name="die" type="Node3D"]
+[node name="die" type="Node3D" groups=["dices"]]
 script = ExtResource("1_pg1s8")
 
 [node name="1" type="MeshInstance3D" parent="."]
