@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgrgpg42cnv7v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j742d"]
+size = Vector2(100, 100)
+
+[node name="hitobject" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+texture = SubResource("PlaceholderTexture2D_j742d")
