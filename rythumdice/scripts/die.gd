@@ -8,7 +8,7 @@ var dicepos
 var next
 var camera
 
-# signal emits when dice is deactivated
+# signal carries score emits when dice is deactivated
 signal dice_finished(moves: int, facing: int)
 # moves count
 var moves
@@ -33,12 +33,13 @@ func move_to_next():
 		active = false
 		dicepos.target_pos.x -= dicepos.DIE_SPACING
 		
-		# emit the signal
+		# emit the signal for scoring
 		dice_finished.emit(moves, 6) # TO BE IMPLEMENTED
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
 		if next: next.active = true
+
 		
 func is_complete():
 	# check if 6 face normal vector is up

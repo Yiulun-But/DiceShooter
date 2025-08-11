@@ -26,3 +26,9 @@ func _process(_delta):
 		# TODO: pass beat number/subdivision as argument
 		emit_signal("on_beat")
 		next_beat += 1
+		
+	# if at the end of the song, emit one more signal
+	elif next_beat == timings.size():
+		var time_delayed = 60 / tempo
+		await get_tree().create_timer(time_delayed).timeout
+		emit_signal("on_beat")
