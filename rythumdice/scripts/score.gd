@@ -36,7 +36,7 @@ func _process(_delta: float) -> void:
 func _on_dice_finished(moves: int, facing: int):
 	if facing == SCORING_FACING:
 		add_score(moves)
-	print("moves: ", moves, ", facing: ", facing)
+	#print("moves: ", moves, ", facing: ", facing)
 
 func add_score(moves: int):
 	score += score_per_beat

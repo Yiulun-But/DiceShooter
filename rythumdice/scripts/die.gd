@@ -40,6 +40,12 @@ func move_to_next():
 		await get_tree().process_frame
 		if next: next.active = true
 		
+func is_complete():
+	# check if 6 face normal vector is up
+	var face_normal = Vector3.DOWN # 6 is facing down by default
+	var world_normal = global_transform.basis * face_normal
+	return world_normal.dot(Vector3.UP) > .95
+
 func rot(axis, angle):
 	var rotation_delta = Quaternion(axis, angle).normalized()
 	target_rot = rotation_delta * target_rot
