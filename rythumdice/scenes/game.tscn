@@ -10,7 +10,7 @@
 [sub_resource type="QuadMesh" id="QuadMesh_7jktm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p57ef"]
-albedo_color = Color(0.47788, 0.47788, 0.47788, 1)
+albedo_color = Color(0.0768359, 0.0768358, 0.0768358, 1)
 
 [sub_resource type="Environment" id="Environment_p57ef"]
 background_mode = 1
@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.5
 environment = SubResource("Environment_p57ef")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.97535, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.159, 0)
 spot_range = 6.864
-spot_attenuation = 1.57
+spot_attenuation = 0.0
 spot_angle = 42.85
