@@ -56,7 +56,7 @@ func calculate_accuracy_timing():
 	return abs(bgm.timings[bgm.next_beat - 1] \
 		- bgm.song.get_playback_position())
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	check_score()
 	label.text = str(score) + "%"
 	
