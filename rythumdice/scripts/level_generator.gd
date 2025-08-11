@@ -11,7 +11,7 @@ const DIE_SPACING = 1.2
 func timings_from_beatmap(beatmap):
 	# generates a list of timestamps where each beat hits
 	var timings = []
-	var beat_length_s = 60. / beatmap.bpm
+	var beat_length_s = beatmap.beats_per_die * 60. / beatmap.bpm 
 	var dice_sequence = beatmap.dice
 	
 	for i in range(dice_sequence.size()):
