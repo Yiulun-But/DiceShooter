@@ -34,7 +34,7 @@ func move_to_next():
 		dicepos.target_pos.x -= dicepos.DIE_SPACING
 		
 		# emit the signal for scoring
-		dice_finished.emit(moves, 6) # TO BE IMPLEMENTED
+		dice_finished.emit(moves, is_complete())
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
@@ -44,7 +44,7 @@ func is_complete():
 	# check if 6 face normal vector is up
 	var face_normal = Vector3.DOWN # 6 is facing down by default
 	var world_normal = global_transform.basis * face_normal
-	return world_normal.dot(Vector3.UP) > .95
+	return world_normal.dot(Vector3.UP) > .45
 
 func rot(axis, angle):
 	var rotation_delta = Quaternion(axis, angle).normalized()
