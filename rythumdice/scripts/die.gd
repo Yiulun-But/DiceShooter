@@ -22,6 +22,12 @@ var face_rotations = {
 	6: Vector3(2*rot_angle, 0, 0),
 }
 
+func correct_move(prev_face, up_face):
+	if up_face   == 6: return true
+	if prev_face == 1: return true
+	return false
+	
+
 func move_to_next():
 	# disable controls for this dice and shift over to the next one
 	if active:
