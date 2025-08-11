@@ -2,11 +2,11 @@ extends Node3D
 
 var bgm
 var level_data
-
-const SEC_PER_MIN = 60
-
+ 
+const SCORING_FACING = 6
 # score
 var score
+var score_per_beat
 
 @onready var label: Label3D = $Label3D
 
@@ -22,18 +22,23 @@ func _ready() -> void:
 	for e in get_tree().get_nodes_in_group("dices"):
 		e.dice_finished.connect(_on_dice_finished)
 	
+	# initialize score data
+	score_per_beat = 100. / bgm.timings.size()
+	
 	# initialize score display
-	label.text = str(score) + "%"
+	label.text = "0 %"
 		
-		
-# calculate time difference between current beat and perfect beat
-func calculate_accuracy_timing():
-	return abs(bgm.timings[bgm.next_beat - 1] \
-		- bgm.song.get_playback_position())
 		
 
 func _process(_delta: float) -> void:
-	label.text = str(score) + "%"
+	label.text = "%0.2f" % score + " %"
 	
 func _on_dice_finished(moves: int, facing: int):
+	if facing == SCORING_FACING:
+		add_score(moves)
 	print("moves: ", moves, ", facing: ", facing)
+
+func add_score(moves: int):
+	score += score_per_beat
+	if (moves <= 1):
+		score += score_per_beat * 0.01
