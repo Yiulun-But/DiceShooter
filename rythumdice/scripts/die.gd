@@ -26,7 +26,7 @@ var face_rotations = {
 	5: Vector3( -rot_angle, 0, 0),
 	6: Vector3(2*rot_angle, 0, 0),
 }
-
+	
 func move_to_next():
 	# disable controls for this dice and shift over to the next one
 	if active:
