@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c021ahdvymsec"]
 
-[ext_resource type="Script" uid="uid://ce31tf8ldper8" path="res://scripts/score.gd" id="1_8juob"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="1_8juob"]
 
 [node name="Score" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

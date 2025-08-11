@@ -31,23 +31,12 @@ func _ready():
 	bgm.timings = timings_from_beatmap(level_data)
 	bgm.start_song()
 	
+	var die = dice.instantiate()
 	# generate dice sequence
-	var prev_die = null
-	var dice_sequence = level_data.dice
-	for i in range(dice_sequence.size()):
-		# create the dice and connect them to the beat
-		var die = dice.instantiate()
-		die.spawn_face = dice_sequence[i]
-		bgm.connect("on_beat", Callable(die, "_on_beat"))
-		add_child(die)
-		
-		# move the die to the end of the line
-		die.global_position = Vector3(DIE_SPACING * i, 0, 0)
-		
-		# activate the first die and connect each one to the next in order
-		if i == 0: die.active = true
-		if prev_die != null: prev_die.next = die
-		prev_die = die
+	bgm.connect("on_beat", Callable(die, "_on_beat"))
+	die.active = true
+	add_child(die)
+
 		
 
 func _process(_delta):

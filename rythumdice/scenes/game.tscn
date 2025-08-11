@@ -1,12 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://dth1yl5xwkye4"]
+[gd_scene load_steps=11 format=3 uid="uid://dth1yl5xwkye4"]
 
-[ext_resource type="Script" uid="uid://bagy67eca5dg5" path="res://scripts/game.gd" id="1_iywne"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_iywne"]
 [ext_resource type="Script" uid="uid://u35cp7188aum" path="res://scripts/camera.gd" id="1_lbhrr"]
 [ext_resource type="Script" uid="uid://yqykucm8siip" path="res://scripts/bgm.gd" id="2_iywne"]
 [ext_resource type="AudioStream" uid="uid://bqcqe5eb00mmf" path="res://audio/basic_song.wav" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b8q8ilye10g25" path="res://scenes/level_generator.tscn" id="4_u5sy4"]
+[ext_resource type="Shader" uid="uid://bhubmsll2svld" path="res://shaders/shaders.gdshader" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://bkxyfjfujryub" path="res://scripts/color_rect.gd" id="7_u5sy4"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_7jktm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5sy4"]
+shader = ExtResource("6_p57ef")
+shader_parameter/scroll_offset = 0.0
+shader_parameter/subdivision = 4.0
+shader_parameter/main_beat_width = 0.008
+shader_parameter/sub_beat_width = 0.004
+shader_parameter/main_beat_height = 0.8
+shader_parameter/sub_beat_height = 0.3
+shader_parameter/main_beat_color = Color(1, 1, 1, 1)
+shader_parameter/sub_beat_color = Color(0.7, 0.7, 0.7, 0.8)
+shader_parameter/background_color = Color(0.1, 0.1, 0.2, 1)
+shader_parameter/glow_intensity = 0.5
+
+[sub_resource type="Environment" id="Environment_iywne"]
+background_mode = 3
+background_canvas_max_layer = -1
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_iywne")
@@ -28,3 +47,17 @@ metadata/_edit_lock_ = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_7jktm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_u5sy4")
+offset_top = 168.0
+offset_right = 1152.0
+offset_bottom = 488.0
+script = ExtResource("7_u5sy4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iywne")

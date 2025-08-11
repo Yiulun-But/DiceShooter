@@ -21,16 +21,6 @@ var face_rotations = {
 	5: Vector3( -rot_angle, 0, 0),
 	6: Vector3(2*rot_angle, 0, 0),
 }
-
-func move_to_next():
-	# disable controls for this dice and shift over to the next one
-	if active:
-		active = false
-		dicepos.target_pos.x -= dicepos.DIE_SPACING
-		
-		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
-		await get_tree().process_frame
-		if next: next.active = true
 		
 func rot(axis, angle):
 	var rotation_delta = Quaternion(axis, angle).normalized()
@@ -59,4 +49,4 @@ func _process(_delta):
 		if Input.is_action_just_pressed("left" ): rot(camera_basis.y, -rot_angle)
 
 func _on_beat():
-	move_to_next()
+	pass
