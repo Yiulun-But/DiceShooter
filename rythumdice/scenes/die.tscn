@@ -11,32 +11,26 @@
 [sub_resource type="QuadMesh" id="QuadMesh_lbo6s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxo0y"]
-shading_mode = 2
 albedo_texture = ExtResource("2_lmrdk")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv0h0"]
-shading_mode = 2
 albedo_texture = ExtResource("3_yeu2p")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fx4x"]
-shading_mode = 2
 albedo_texture = ExtResource("4_4ryx6")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5qhq"]
-shading_mode = 2
 albedo_texture = ExtResource("5_3q1uh")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3244"]
-shading_mode = 2
 albedo_texture = ExtResource("6_puq3y")
 texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l438t"]
-shading_mode = 2
 albedo_texture = ExtResource("7_gvult")
 texture_filter = 0
 

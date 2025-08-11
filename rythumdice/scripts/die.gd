@@ -4,13 +4,12 @@ extends Node3D
 @export var spawn_face: int = 1
 
 var finished = false
-var dicepos
+var levelgen
 var next
 var camera
 
 # signal carries score emits when dice is deactivated
 signal dice_finished(moves: int, facing: int)
-# moves count
 var moves
 
 var target_rot : Quaternion
@@ -31,13 +30,23 @@ func move_to_next():
 	# disable controls for this dice and shift over to the next one
 	if active:
 		active = false
-		dicepos.target_pos.x -= dicepos.DIE_SPACING
+		levelgen.target_pos.x -= levelgen.DIE_SPACING
 		
 		# emit the signal for scoring
 		dice_finished.emit(moves, 6) # TO BE IMPLEMENTED
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
+		
+		# create a new dice if in level editing mode
+		if levelgen.is_editor:
+			var bgm = levelgen.bgm
+			bgm.timings.append(bgm.timings.back() + levelgen.beat_length_s)
+			levelgen.level_data.dice.append(6)
+			next = levelgen.make_die(6)
+			next.position.x = position.x + levelgen.DIE_SPACING
+			
+		
 		if next: next.active = true
 
 func is_complete():
@@ -51,14 +60,16 @@ func rot(axis, angle):
 	target_rot = rotation_delta * target_rot
 
 func _ready():
-	camera     = get_tree().get_nodes_in_group("camera"  )[0]
-	dicepos    = get_tree().get_nodes_in_group("levelgen")[0]
+	camera   = get_tree().get_nodes_in_group("camera"  )[0]
+	levelgen = get_tree().get_nodes_in_group("levelgen")[0]
 	
 	# rotate so the correct face is up
 	rotation   = face_rotations[spawn_face]
 	target_rot = global_transform.basis.get_rotation_quaternion()
 
 	moves = 0
+	
+	
 func _process(_delta):
 	# interpolate rotation
 	var current_rot = global_transform.basis.get_rotation_quaternion()

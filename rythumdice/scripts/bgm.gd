@@ -23,7 +23,6 @@ func _process(_delta):
 	if next_beat < timings.size() \
 	   and song_elapsed >= timings[next_beat]:
 		# sends a generic signal so UI and other game elements can connect to it and sync to the beat
-		# TODO: pass beat number/subdivision as argument
 		emit_signal("on_beat")
 		next_beat += 1
 		
