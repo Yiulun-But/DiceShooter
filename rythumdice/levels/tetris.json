@@ -1,6 +1,6 @@
 {
 	"bpm": 140,
-	"audio": "res://audio/tetris.mp3",
+	"audio": "res://audio/tetris99.mp3",
 	"dice": [
 		1, 1, 4, 1, 1, 1, 4, 1, 
 		1, 1, 4, 4, 1, 1, 4, 4, 
