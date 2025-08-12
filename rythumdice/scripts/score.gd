@@ -42,12 +42,16 @@ func add_score(moves: int):
 	
 	# apply effect
 	var score_gained_inst = score_gained.instantiate()
-	score_gained_inst.global_transform.origin = Vector3(0, 2, 0)
-	score_gained_inst.set_score_text(SCORE_PER_BEAT)
-	add_child(score_gained_inst)
+	score_gained_inst.global_transform.origin = Vector3(0, 0.2, 0)
 	
 	if (moves <= 1):
 		score += SCORE_PER_BEAT_BONUS
+		score_gained_inst.set_score_colour(Color.YELLOW)
+		score_gained_inst.set_score_text(SCORE_PER_BEAT + SCORE_PER_BEAT_BONUS)
+	else:
+		score_gained_inst.set_score_text(SCORE_PER_BEAT)
+	
+	add_child(score_gained_inst)
 
 func _on_level_finished():
 	score_background.visible = true

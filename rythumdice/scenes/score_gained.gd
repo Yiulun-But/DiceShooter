@@ -1,6 +1,6 @@
 extends Label3D
 
-@export var float_distance: float = 1.0  # How high it moves
+@export var float_distance: float = -1.0  # How high it moves
 @export var duration: float = 0.5        # How long until it disappears
 @export var score_color: Color = Color.WHITE
 
@@ -10,6 +10,8 @@ var time_passed: float = 0.0
 func _ready():
 	start_position = global_transform.origin
 	modulate = score_color
+func set_score_colour(colour: Color):
+	score_color = colour
 
 func set_score_text(points: int):
 	text = "+" + str(points)
