@@ -13,8 +13,8 @@ func _ready():
 func set_score_colour(colour: Color):
 	score_color = colour
 
-func set_score_text(points: int):
-	text = "+" + str(points)
+func set_score_text(text_display: String):
+	text = text_display
 
 func _process(delta: float):
 	time_passed += delta

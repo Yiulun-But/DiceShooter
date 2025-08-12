@@ -42,14 +42,17 @@ func add_score(moves: int):
 	
 	# apply effect
 	var score_gained_inst = score_gained.instantiate()
-	score_gained_inst.global_transform.origin = Vector3(0, 0.2, 0)
+	score_gained_inst.position = Vector3(0, 0.2, 0)
 	
 	if (moves <= 1):
+		# perfect
 		score += SCORE_PER_BEAT_BONUS
-		score_gained_inst.set_score_colour(Color.YELLOW)
-		score_gained_inst.set_score_text(SCORE_PER_BEAT + SCORE_PER_BEAT_BONUS)
+		score_gained_inst.set_score_colour(Color("#d48142"))
+		score_gained_inst.set_score_text("PERFECT")
 	else:
-		score_gained_inst.set_score_text(SCORE_PER_BEAT)
+		# good
+		score_gained_inst.set_score_colour(Color("#613228"))
+		score_gained_inst.set_score_text("GOOD")
 	
 	add_child(score_gained_inst)
 
