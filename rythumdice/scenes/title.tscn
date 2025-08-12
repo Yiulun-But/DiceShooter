@@ -1,15 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bjbk2udfsc1k"]
 
-[ext_resource type="Script" uid="uid://1lx2gh3r176" path="res://scenes/title.gd" id="1_4rr2b"]
-[ext_resource type="FontFile" uid="uid://irqu3lqtde74" path="res://fonts/LcdSolid-VPzB.ttf" id="1_p6dhs"]
+[ext_resource type="Script" uid="uid://1lx2gh3r176" path="res://scripts/title.gd" id="1_4rr2b"]
 [ext_resource type="PackedScene" uid="uid://8rrqwhgre17n" path="res://scenes/die.tscn" id="2_pyl7j"]
+[ext_resource type="Theme" uid="uid://cdfb7rjg0hht0" path="res://main_menu.tres" id="2_yql1r"]
 [ext_resource type="ArrayMesh" uid="uid://d12ot36y2wq6m" path="res://assets/stage.obj" id="3_b3w7a"]
-[ext_resource type="Script" uid="uid://hxrljlafp6i0" path="res://scenes/titledie.gd" id="3_pyl7j"]
-[ext_resource type="Script" uid="uid://khbhhxwimo6e" path="res://scripts/title_cmera.gd" id="5_b3w7a"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_4rr2b"]
-font = ExtResource("1_p6dhs")
-font_size = 108
+[ext_resource type="Script" uid="uid://hxrljlafp6i0" path="res://scripts/titledie.gd" id="3_pyl7j"]
+[ext_resource type="Script" path="res://scripts/title_cmera.gd" id="5_b3w7a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1n6"]
 albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
@@ -28,78 +24,11 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.901961, 0.909804, 1, 1)
 volumetric_fog_emission_energy = 0.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_4rr2b"]
+font_size = 60
+
 [node name="Title" type="Node3D"]
 script = ExtResource("1_4rr2b")
-
-[node name="Play" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_top = -112.0
-offset_right = -48.0
-offset_bottom = -112.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(2.72281, 2.68072)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Play"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -38.1959
-offset_top = -95.4969
-offset_right = 28.8041
-offset_bottom = 5.50314
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.66212, 1.55317)
-
-[node name="Easy" type="Button" parent="Play/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p6dhs")
-theme_override_font_sizes/font_size = 12
-text = "Easy"
-
-[node name="Medium" type="Button" parent="Play/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p6dhs")
-theme_override_font_sizes/font_size = 12
-text = "Normal"
-
-[node name="Hard" type="Button" parent="Play/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_p6dhs")
-theme_override_font_sizes/font_size = 12
-text = "Hard
-"
-
-[node name="Title" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -16.0
-offset_top = -40.0
-offset_right = 24.0
-grow_horizontal = 2
-
-[node name="Title" type="Label" parent="Title"]
-layout_mode = 0
-offset_left = -280.0
-offset_top = 144.0
-offset_right = 315.0
-offset_bottom = 365.0
-text = "DiceDance
-"
-label_settings = SubResource("LabelSettings_4rr2b")
-vertical_alignment = 1
 
 [node name="Scene" type="Node3D" parent="."]
 
@@ -159,5 +88,61 @@ script = ExtResource("5_b3w7a")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Play" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Play"]
+layout_mode = 1
+offset_left = -150.0
+offset_right = 152.0
+offset_bottom = 101.0
+
+[node name="Easy" type="Button" parent="CanvasLayer/Play/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_yql1r")
+text = "Level 1"
+
+[node name="Medium" type="Button" parent="CanvasLayer/Play/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_yql1r")
+text = "Level 2"
+
+[node name="Hard" type="Button" parent="CanvasLayer/Play/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_yql1r")
+text = "Level 3
+"
+
+[node name="Title" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -40.0
+offset_right = 24.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Title"]
+layout_mode = 0
+offset_left = -562.0
+offset_top = 207.0
+offset_right = 595.0
+offset_bottom = 345.0
+theme = ExtResource("2_yql1r")
+text = "DiceDance"
+label_settings = SubResource("LabelSettings_4rr2b")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="Scene/die" method="_on_timer_timeout"]
