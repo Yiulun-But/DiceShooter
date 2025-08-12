@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c021ahdvymsec"]
+[gd_scene load_steps=4 format=3 uid="uid://c021ahdvymsec"]
 
 [ext_resource type="Script" uid="uid://ce31tf8ldper8" path="res://scripts/score.gd" id="1_8juob"]
+[ext_resource type="FontFile" uid="uid://dfogcap3ekwa4" path="res://assets/Minecraft.ttf" id="2_bak1h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8juob"]
 size = Vector2(20, 20)
@@ -12,7 +13,8 @@ script = ExtResource("1_8juob")
 [node name="ScoreIngame" type="Label3D" parent="."]
 modulate = Color(0.881937, 0.881937, 0.881937, 1)
 outline_modulate = Color(0, 0, 0, 0)
-font_size = 24
+font = ExtResource("2_bak1h")
+font_size = 36
 outline_size = 24
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
