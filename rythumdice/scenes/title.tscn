@@ -31,7 +31,7 @@ volumetric_fog_albedo = Color(0.901961, 0.909804, 1, 1)
 volumetric_fog_emission_energy = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4rr2b"]
-font_size = 60
+font_size = 130
 
 [sub_resource type="QuadMesh" id="QuadMesh_w65of"]
 
@@ -44,7 +44,7 @@ script = ExtResource("1_4rr2b")
 [node name="Scene" type="Node3D" parent="."]
 
 [node name="die" parent="Scene" instance=ExtResource("2_pyl7j")]
-transform = Transform3D(3.39071, 0.662102, 0.561007, 0.24384, -2.89833, 1.94685, 0.832856, -1.84698, -2.85395, 0, 5, 9.112)
+transform = Transform3D(2.87186, 1.27641, 1.54053, -0.781838, -1.76472, 2.91967, 1.84152, -2.73981, -1.16288, 0.497929, 5, 8.97947)
 script = ExtResource("3_hiwto")
 
 [node name="bpm_timer" type="Timer" parent="Scene/die"]
@@ -58,6 +58,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2.5100
 
 [node name="Cyan" type="SpotLight3D" parent="Scene/Stage/Spotlight"]
 transform = Transform3D(0.361911, 0.415355, -0.834566, 0.929976, -0.222851, 0.292375, -0.0645442, -0.88194, -0.466922, -0.988832, 6.0151, 6.77769)
+visible = false
 light_color = Color(0, 0.8, 1, 1)
 light_energy = 10.333
 light_indirect_energy = 7.715
@@ -80,7 +81,7 @@ spot_angle = 42.4
 [node name="Orange" type="SpotLight3D" parent="Scene/Stage/Spotlight"]
 transform = Transform3D(0.933574, -0.0148949, 0.358074, 0.183481, -0.838398, -0.513249, 0.307853, 0.544856, -0.779974, 7.25785, 1.75059, 5.87993)
 light_color = Color(1, 0.6, 0.2, 1)
-light_energy = 9.89
+light_energy = 1.096
 light_indirect_energy = 4.884
 light_volumetric_fog_energy = 0.0
 light_size = 0.187
@@ -100,9 +101,9 @@ light_energy = 0.15
 light_volumetric_fog_energy = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28507, 5, 19.126)
+transform = Transform3D(1, 0, 0, 0, 0.986963, -0.160949, 0, 0.160949, 0.986963, -0.730146, 4.61835, 16.3418)
 environment = SubResource("Environment_b3w7a")
-fov = 32.8
+fov = 30.4
 far = 1000.0
 script = ExtResource("5_b3w7a")
 
@@ -135,9 +136,10 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="Control" parent="CanvasLayer/CanvasAnimation/Play"]
 anchors_preset = 0
-offset_left = 163.0
-offset_right = 481.0
-offset_bottom = 101.0
+offset_left = -456.0
+offset_top = 169.0
+offset_right = 540.0
+offset_bottom = 281.0
 
 [node name="Easy" type="Button" parent="CanvasLayer/CanvasAnimation/Play/VBoxContainer"]
 texture_filter = 2
@@ -181,14 +183,14 @@ grow_horizontal = 2
 [node name="Title" type="Label" parent="CanvasLayer/CanvasAnimation/Title"]
 texture_filter = 2
 layout_mode = 0
-offset_left = 63.0
-offset_top = 215.0
-offset_right = 590.0
-offset_bottom = 353.0
+offset_left = -570.0
+offset_top = 141.0
+offset_right = -43.0
+offset_bottom = 499.68
 theme = ExtResource("2_yql1r")
-text = "DiceDance"
+text = "Dice
+Dance"
 label_settings = SubResource("LabelSettings_4rr2b")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
