@@ -11,6 +11,10 @@ var next_beat = 1
 @onready var floating_text = preload("res://scenes/floating_text.tscn")
 
 # prompt data
+# this function is partially hard-coded due to the time reason
+# parts that are hard coded:
+# - prompt list
+# - which level to prompt (current level 1 only)
 var prompts = {
 	3: "Hello, this is 3th beat",
 	30: "Well, 30th right now"
@@ -45,7 +49,7 @@ func _process(_delta):
 
 # check if current beat has a related prompt
 func check_prompt(beat: int):
-	if prompts.has(beat):
+	if prompts.has(beat) and global.selected_level == "res://levels/level1.json":
 		add_prompt(prompts[beat], 3.0)
 		
 # add the prompt text to the game
