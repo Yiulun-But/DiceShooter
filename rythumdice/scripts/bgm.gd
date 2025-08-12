@@ -6,6 +6,7 @@ var audio
 var timings
 var next_beat = 1
 
+@onready var beat_label = $beat_label
 @onready var song = $song
 
 func _ready():
@@ -25,6 +26,7 @@ func _process(_delta):
 		# sends a generic signal so UI and other game elements can connect to it and sync to the beat
 		emit_signal("on_beat")
 		next_beat += 1
+		beat_label.text = str(next_beat - 1)
 		
 	# if at the end of the song, emit one more signal
 	elif next_beat == timings.size():
