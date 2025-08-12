@@ -92,11 +92,18 @@ func _input(event):
 	if event is not InputEventKey: return
 	if active and not event.echo:
 		var camera_basis = camera.global_transform.basis
-		if event.is_action_pressed("up"   ): rot(camera_basis.x, -rot_angle)
-		if event.is_action_pressed("down" ): rot(camera_basis.x,  rot_angle)
-		if event.is_action_pressed("right"): rot(camera_basis.y,  rot_angle)
-		if event.is_action_pressed("left" ): rot(camera_basis.y, -rot_angle)
-		moves += 1
+		if event.is_action_pressed("up"   ): 
+			rot(camera_basis.x, -rot_angle)
+			moves += 1
+		if event.is_action_pressed("down" ): 
+			rot(camera_basis.x,  rot_angle)
+			moves += 1
+		if event.is_action_pressed("right"): 
+			rot(camera_basis.y,  rot_angle)
+			moves += 1
+		if event.is_action_pressed("left" ): 
+			rot(camera_basis.y, -rot_angle)
+			moves += 1
 
 func _on_beat():
 	move_to_next()
