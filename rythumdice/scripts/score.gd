@@ -9,7 +9,7 @@ const SCORE_PER_BEAT_BONUS = 20
 var score
 
 @onready var score_ingame: Label3D = $ScoreIngame
-@onready var score_background: MeshInstance3D = $MeshInstance3D
+@onready var score_background: Node3D = $MeshInstance3D
 @onready var score_final: Label3D = $MeshInstance3D/ScoreFinal
 @onready var score_gained = preload("res://scenes/score_gained.tscn")
 @onready var button: Label3D = $MeshInstance3D/ButtonToTheMenu

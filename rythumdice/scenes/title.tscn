@@ -139,7 +139,7 @@ layout_mode = 2
 offset_right = 318.0
 offset_bottom = 31.0
 theme = ExtResource("2_yql1r")
-text = "Level 1"
+text = "Level 1: Learning the Ropes"
 alignment = 0
 
 [node name="Medium" type="Button" parent="CanvasLayer/CanvasAnimation/Play/VBoxContainer"]
@@ -148,7 +148,7 @@ offset_top = 35.0
 offset_right = 318.0
 offset_bottom = 66.0
 theme = ExtResource("2_yql1r")
-text = "Level 2"
+text = "Level 2: Having fun with it"
 alignment = 0
 
 [node name="Hard" type="Button" parent="CanvasLayer/CanvasAnimation/Play/VBoxContainer"]
@@ -157,8 +157,7 @@ offset_top = 70.0
 offset_right = 318.0
 offset_bottom = 101.0
 theme = ExtResource("2_yql1r")
-text = "Level 3
-"
+text = "Level 3: A Challenge"
 alignment = 0
 
 [node name="Title" type="Control" parent="CanvasLayer/CanvasAnimation"]

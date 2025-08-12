@@ -1,9 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c021ahdvymsec"]
+[gd_scene load_steps=3 format=3 uid="uid://c021ahdvymsec"]
 
 [ext_resource type="Script" uid="uid://ce31tf8ldper8" path="res://scripts/score.gd" id="1_8juob"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_8juob"]
-size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8juob"]
 size = Vector3(1.5, 0.5, 0.2)
@@ -18,10 +15,9 @@ outline_modulate = Color(0, 0, 0, 0)
 font_size = 36
 outline_size = 24
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999973, 0.00740013, 0, -0.00740013, 0.999973, 0, -1.21826e-08, 0.278705)
+[node name="MeshInstance3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999973, 0.00740013, 0, -0.00740013, 0.999973, 0, 0.164119, 0.278705)
 visible = false
-mesh = SubResource("QuadMesh_8juob")
 
 [node name="Title" type="Label3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64474, 0.112172)
@@ -36,12 +32,14 @@ font_size = 128
 outline_size = 28
 
 [node name="ButtonToTheMenu" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512521, -0.00379285)
 modulate = Color(0.85, 0.85, 0.85, 1)
 text = "Back to Menu"
 font_size = 26
 outline_size = 8
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.523733, -0.00387582)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 shape = SubResource("BoxShape3D_8juob")
