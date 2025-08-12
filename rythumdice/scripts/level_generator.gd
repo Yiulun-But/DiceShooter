@@ -41,6 +41,9 @@ func make_die(up_face):
 	return die
 
 func _ready():
+	if global.selected_level != "":
+		level = global.selected_level
+	
 	add_to_group("levelgen")
 	level_data = load_json(level)
 	

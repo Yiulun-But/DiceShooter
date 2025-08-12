@@ -18,6 +18,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="uid://qtsbr8a03s0o"
 
+[autoload]
+
+global="*res://scripts/global.gd"
+
 [input]
 
 up={
