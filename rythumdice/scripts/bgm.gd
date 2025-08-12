@@ -16,8 +16,10 @@ var next_beat = 1
 # - prompt list
 # - which level to prompt (current level 1 only)
 var prompts = {
-	3: "Hello, this is 3th beat",
-	30: "Well, 30th right now"
+	1: "Welcome to Rythum Dice.",
+	8: "In this game, you rotate the dice to show a 6.",
+	16: "Lets start by pressing down.",
+	32: "Great. Now lets go up.",
 }
 
 func _ready():
@@ -50,12 +52,12 @@ func _process(_delta):
 # check if current beat has a related prompt
 func check_prompt(beat: int):
 	if prompts.has(beat) and global.selected_level == "res://levels/level1.json":
-		add_prompt(prompts[beat], 3.0)
+		add_prompt(prompts[beat], 4.)
 		
 # add the prompt text to the game
 func add_prompt(txt: String, duration: float):
 	var text_inst = floating_text.instantiate()
 	text_inst.set_text_and_colour(txt, Color.WHITE)
-	text_inst.set_time_out(5.0)
-	text_inst.position = Vector3(0, 0.2, -2)
+	text_inst.set_time_out(duration)
+	text_inst.position = Vector3(0, 0.2, -1)
 	add_child(text_inst)
