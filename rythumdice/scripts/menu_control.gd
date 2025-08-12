@@ -9,5 +9,5 @@ func _on_button2_pressed():
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_button3_pressed():
-	global.selected_level = "res://levels/new_level.json"
+	global.selected_level = "res://levels/level3.json"
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
