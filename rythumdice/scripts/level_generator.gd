@@ -29,7 +29,7 @@ func timings_from_beatmap(beatmap):
 	
 	for i in range(dice_sequence.size()):
 		# in future will handle different beat divisions here
-		timings.append(i * beat_length_s - beat_length_s/2)
+		timings.append(i * beat_length_s - 3*beat_length_s/2)
 		
 	return timings
 	

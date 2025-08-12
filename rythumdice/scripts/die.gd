@@ -84,7 +84,10 @@ func _process(_delta):
 	transform.basis = Basis(current_rot)
 	
 	# controls for rotating the dice
+	scale = Vector3.ONE
 	if active:
+		scale = Vector3.ONE * 1.1
+		
 		var camera_basis = camera.global_transform.basis
 		if Input.is_action_just_pressed("up"   ): rot(camera_basis.x, -rot_angle)
 		if Input.is_action_just_pressed("down" ): rot(camera_basis.x,  rot_angle)
