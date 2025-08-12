@@ -51,11 +51,11 @@ spot_attenuation = 0.0
 spot_angle = 35.99
 spot_angle_attenuation = 1.56917
 
-[node name="bg_circle" type="MeshInstance3D" parent="."]
+[node name="beat_circle" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01995, 0)
 mesh = SubResource("CylinderMesh_iywne")
 skeleton = NodePath("../level_generator")
 surface_material_override/0 = SubResource("StandardMaterial3D_iywne")
 script = ExtResource("6_p57ef")
 
-[connection signal="on_beat" from="bgm" to="bg_circle" method="_on_beat"]
+[connection signal="on_beat" from="bgm" to="beat_circle" method="_on_beat"]
