@@ -18,8 +18,14 @@ var next_beat = 1
 var prompts = {
 	1: "Welcome to Rythum Dice.",
 	8: "In this game, you rotate the dice to show a 6.",
-	16: "Lets start by pressing down.",
+	16: "Lets start by going down.",
 	32: "Great. Now lets go up.",
+	48: "You get the idea.",
+	
+	80: "Okay, one more thing.",
+	88: "If you see a one, you have to be a little bit quicker.",
+	96: "But that shouldn't be a problem for you.",
+	104: "Time for a challenge. Good Luck!"
 }
 
 func _ready():
