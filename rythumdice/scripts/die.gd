@@ -86,21 +86,11 @@ func _process(_delta):
 	# controls for rotating the dice
 	if active:
 		var camera_basis = camera.global_transform.basis
-		if Input.is_action_just_pressed("up"   ): 
-			rot(camera_basis.x, -rot_angle)
-			add_move_count()
-		if Input.is_action_just_pressed("down" ): 
-			rot(camera_basis.x,  rot_angle)
-			add_move_count()
-		if Input.is_action_just_pressed("right"): 
-			rot(camera_basis.y,  rot_angle)
-			add_move_count()
-		if Input.is_action_just_pressed("left" ): 
-			rot(camera_basis.y, -rot_angle)
-			add_move_count()
-
-func add_move_count():
-	moves += 1
+		if Input.is_action_just_pressed("up"   ): rot(camera_basis.x, -rot_angle)
+		if Input.is_action_just_pressed("down" ): rot(camera_basis.x,  rot_angle)
+		if Input.is_action_just_pressed("right"): rot(camera_basis.y,  rot_angle)
+		if Input.is_action_just_pressed("left" ): rot(camera_basis.y, -rot_angle)
+		moves += 1
 
 func _on_beat():
 	move_to_next()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjbk2udfsc1k"]
+[gd_scene load_steps=12 format=3 uid="uid://bjbk2udfsc1k"]
 
 [ext_resource type="Script" uid="uid://1lx2gh3r176" path="res://scripts/title.gd" id="1_4rr2b"]
 [ext_resource type="PackedScene" uid="uid://8rrqwhgre17n" path="res://scenes/die.tscn" id="2_pyl7j"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d12ot36y2wq6m" path="res://assets/stage.obj" id="3_b3w7a"]
 [ext_resource type="Script" uid="uid://hxrljlafp6i0" path="res://scripts/titledie.gd" id="3_pyl7j"]
 [ext_resource type="Script" path="res://scripts/title_cmera.gd" id="5_b3w7a"]
+[ext_resource type="Script" uid="uid://jhy36inqbalf" path="res://scripts/menu_control.gd" id="6_yql1r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1n6"]
 albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
@@ -90,6 +91,7 @@ script = ExtResource("5_b3w7a")
 wait_time = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("6_yql1r")
 
 [node name="Play" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -146,3 +148,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="Scene/die" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Play/VBoxContainer/Easy" to="CanvasLayer" method="_on_button1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Play/VBoxContainer/Medium" to="CanvasLayer" method="_on_button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Play/VBoxContainer/Hard" to="CanvasLayer" method="_on_button3_pressed"]
