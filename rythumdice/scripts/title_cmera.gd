@@ -12,11 +12,11 @@ var has_animated: bool = false
 
 func _ready():
 	# Set initial camera angle
-	rotation_degrees.x = start_angle
+	#rotation_degrees.x = start_angle
 	current = true
 	
 	# Start the animation sequence
-	start_intro_animation()
+	#start_intro_animation()
 
 func start_intro_animation():
 	if has_animated:
