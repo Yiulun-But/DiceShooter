@@ -7,9 +7,11 @@ const SCORE_PER_BEAT = 60
 const SCORE_PER_BEAT_BONUS = 20
 # score
 var score
+
 @onready var score_ingame: Label3D = $ScoreIngame
 @onready var score_background: MeshInstance3D = $MeshInstance3D
 @onready var score_final: Label3D = $MeshInstance3D/ScoreFinal
+@onready var score_gained = preload("res://scenes/score_gained.tscn")
 
 func _ready() -> void:
 	# initialize the score
@@ -37,6 +39,13 @@ func _on_dice_finished(moves: int, facing: bool):
 
 func add_score(moves: int):
 	score += SCORE_PER_BEAT
+	
+	# apply effect
+	var score_gained_inst = score_gained.instantiate()
+	score_gained_inst.global_transform.origin = Vector3(0, 2, 0)
+	score_gained_inst.set_score_text(SCORE_PER_BEAT)
+	add_child(score_gained_inst)
+	
 	if (moves <= 1):
 		score += SCORE_PER_BEAT_BONUS
 
