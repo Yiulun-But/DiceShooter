@@ -33,18 +33,16 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	score_ingame.text = str(score)
 	
-func _on_dice_finished(moves: int, facing: bool):
-	if facing:
-		add_score(moves)
-
-func add_score(moves: int):
+func _on_dice_finished(best_moves: bool, right_facing: bool):
+	if not right_facing: return
+	
 	score += SCORE_PER_BEAT
 	
 	# apply effect
 	var score_gained_inst = score_gained.instantiate()
 	score_gained_inst.position = Vector3(0, 0.2, 0)
 	
-	if (moves <= 1):
+	if (best_moves):
 		# perfect
 		score += SCORE_PER_BEAT_BONUS
 		score_gained_inst.set_score_colour(Color("#d48142"))

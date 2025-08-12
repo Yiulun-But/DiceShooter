@@ -9,7 +9,7 @@ var next
 var camera
 
 # signal carries score emits when dice is deactivated
-signal dice_finished(moves: int, facing: int)
+signal dice_finished(best_moves: bool, correct_facing: bool)
 # signal when level is finished
 signal level_finished()
 
@@ -37,7 +37,15 @@ func move_to_next():
 		levelgen.target_pos.x -= levelgen.DIE_SPACING
 		
 		# emit the signal for scoring
-		dice_finished.emit(moves, is_complete())
+		var best_moves
+		if spawn_face == 1:
+			best_moves = moves <= 2
+		elif spawn_face == 6:
+			best_moves = moves == 0
+		else:
+			best_moves = moves <= 1
+		
+		dice_finished.emit(best_moves, is_complete())
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
