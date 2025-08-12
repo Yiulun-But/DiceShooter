@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjbk2udfsc1k"]
+[gd_scene load_steps=15 format=3 uid="uid://bjbk2udfsc1k"]
 
 [ext_resource type="Script" uid="uid://1lx2gh3r176" path="res://scripts/title.gd" id="1_4rr2b"]
 [ext_resource type="PackedScene" uid="uid://8rrqwhgre17n" path="res://scenes/die.tscn" id="2_pyl7j"]
 [ext_resource type="Theme" uid="uid://cdfb7rjg0hht0" path="res://main_menu.tres" id="2_yql1r"]
 [ext_resource type="ArrayMesh" uid="uid://d12ot36y2wq6m" path="res://assets/stage.obj" id="3_b3w7a"]
+[ext_resource type="Script" uid="uid://c3tvgf55m3mup" path="res://scenes/title_die.gd" id="3_hiwto"]
 [ext_resource type="Script" uid="uid://khbhhxwimo6e" path="res://scripts/title_cmera.gd" id="5_b3w7a"]
 [ext_resource type="Script" path="res://scripts/canvas_animation.gd" id="6_ia1n6"]
 [ext_resource type="Script" uid="uid://jhy36inqbalf" path="res://scripts/menu_control.gd" id="6_yql1r"]
+[ext_resource type="AudioStream" uid="uid://vhxu47y75ql8" path="res://audio/Level1.wav" id="8_ia1n6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1n6"]
 albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
@@ -38,7 +40,9 @@ script = ExtResource("1_4rr2b")
 
 [node name="die" parent="Scene" instance=ExtResource("2_pyl7j")]
 transform = Transform3D(3.39071, 0.662102, 0.561007, 0.24384, -2.89833, 1.94685, 0.832856, -1.84698, -2.85395, 0, 5, 9.112)
-script = null
+script = ExtResource("3_hiwto")
+
+[node name="bpm_timer" type="Timer" parent="Scene/die"]
 
 [node name="Stage" type="MeshInstance3D" parent="Scene"]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 2.51001, 0.0818725, 9.47249)
@@ -97,7 +101,7 @@ far = 1000.0
 script = ExtResource("5_b3w7a")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.333
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("6_yql1r")
@@ -178,6 +182,11 @@ label_settings = SubResource("LabelSettings_4rr2b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ia1n6")
+autoplay = true
+
+[connection signal="timeout" from="Scene/die/bpm_timer" to="Scene/die" method="_on_beat_menu"]
 [connection signal="timeout" from="Timer" to="Scene/die" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/CanvasAnimation/Play/VBoxContainer/Easy" to="CanvasLayer" method="_on_button1_pressed"]
 [connection signal="pressed" from="CanvasLayer/CanvasAnimation/Play/VBoxContainer/Medium" to="CanvasLayer" method="_on_button2_pressed"]
