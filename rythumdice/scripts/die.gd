@@ -9,7 +9,7 @@ var next
 var camera
 
 # signal carries score emits when dice is deactivated
-signal dice_finished(moves: int, facing: int)
+signal dice_finished(best_moves: bool, correct_facing: bool)
 # signal when level is finished
 signal level_finished()
 
@@ -37,7 +37,15 @@ func move_to_next():
 		levelgen.target_pos.x -= levelgen.DIE_SPACING
 		
 		# emit the signal for scoring
-		dice_finished.emit(moves, is_complete())
+		var best_moves
+		if spawn_face == 1:
+			best_moves = moves <= 2
+		elif spawn_face == 6:
+			best_moves = moves == 0
+		else:
+			best_moves = moves <= 1
+		
+		dice_finished.emit(best_moves, is_complete())
 		
 		# wait for the next frame before activating the next dice, prevents bug where they both rotate at once
 		await get_tree().process_frame
@@ -92,11 +100,18 @@ func _input(event):
 	if event is not InputEventKey: return
 	if active and not event.echo:
 		var camera_basis = camera.global_transform.basis
-		if event.is_action_pressed("up"   ): rot(camera_basis.x, -rot_angle)
-		if event.is_action_pressed("down" ): rot(camera_basis.x,  rot_angle)
-		if event.is_action_pressed("right"): rot(camera_basis.y,  rot_angle)
-		if event.is_action_pressed("left" ): rot(camera_basis.y, -rot_angle)
-		moves += 1
+		if event.is_action_pressed("up"   ): 
+			rot(camera_basis.x, -rot_angle)
+			moves += 1
+		if event.is_action_pressed("down" ): 
+			rot(camera_basis.x,  rot_angle)
+			moves += 1
+		if event.is_action_pressed("right"): 
+			rot(camera_basis.y,  rot_angle)
+			moves += 1
+		if event.is_action_pressed("left" ): 
+			rot(camera_basis.y, -rot_angle)
+			moves += 1
 
 func _on_beat():
 	move_to_next()

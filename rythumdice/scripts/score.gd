@@ -7,9 +7,11 @@ const SCORE_PER_BEAT = 60
 const SCORE_PER_BEAT_BONUS = 20
 # score
 var score
+
 @onready var score_ingame: Label3D = $ScoreIngame
 @onready var score_background: MeshInstance3D = $MeshInstance3D
 @onready var score_final: Label3D = $MeshInstance3D/ScoreFinal
+@onready var score_gained = preload("res://scenes/score_gained.tscn")
 
 func _ready() -> void:
 	# initialize the score
@@ -31,14 +33,26 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	score_ingame.text = str(score)
 	
-func _on_dice_finished(moves: int, facing: bool):
-	if facing:
-		add_score(moves)
-
-func add_score(moves: int):
+func _on_dice_finished(best_moves: bool, right_facing: bool):
+	if not right_facing: return
+	
 	score += SCORE_PER_BEAT
-	if (moves <= 1):
+	
+	# apply effect
+	var score_gained_inst = score_gained.instantiate()
+	score_gained_inst.position = Vector3(0, 0.2, 0)
+	
+	if (best_moves):
+		# perfect
 		score += SCORE_PER_BEAT_BONUS
+		score_gained_inst.set_score_colour(Color("#d48142"))
+		score_gained_inst.set_score_text("PERFECT")
+	else:
+		# good
+		score_gained_inst.set_score_colour(Color("#613228"))
+		score_gained_inst.set_score_text("GOOD")
+	
+	add_child(score_gained_inst)
 
 func _on_level_finished():
 	score_background.visible = true

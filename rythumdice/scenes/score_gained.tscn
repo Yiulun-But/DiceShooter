@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx5rqmjhrs6ep"]
+
+[ext_resource type="Script" uid="uid://dh55g4njy6vx1" path="res://scenes/score_gained.gd" id="1_wd7hn"]
+
+[node name="ScoreGained" type="Label3D"]
+font_size = 28
+script = ExtResource("1_wd7hn")
