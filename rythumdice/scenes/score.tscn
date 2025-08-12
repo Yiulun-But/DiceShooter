@@ -23,10 +23,13 @@ visible = false
 mesh = SubResource("QuadMesh_8juob")
 
 [node name="Title" type="Label3D" parent="MeshInstance3D"]
-text = "YOU SCORED"
-font_size = 64
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64474, 0.112172)
+text = "SCORE"
+font_size = 48
 
 [node name="ScoreFinal" type="Label3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0942822, 0.100698)
 offset = Vector2(0, 200)
+text = "10000000"
 font_size = 128
 outline_size = 28
