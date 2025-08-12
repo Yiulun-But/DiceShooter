@@ -59,6 +59,8 @@ func _ready():
 	bgm.timings = timings_from_beatmap(level_data)
 	bgm.start_song()
 	
+	if is_editor: bgm.beat_label.visible = true
+	
 	# generate dice sequence
 	var prev_die = null
 	var dice_sequence = level_data.dice
