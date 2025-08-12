@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6gy1nvuyk4mt"]
+
+[ext_resource type="Script" uid="uid://bdnpyrnimmfpd" path="res://scripts/floating_text.gd" id="1_45khh"]
+
+[node name="FloatingText" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+text = "test"
+script = ExtResource("1_45khh")

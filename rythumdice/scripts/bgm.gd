@@ -8,6 +8,13 @@ var next_beat = 1
 
 @onready var beat_label = $beat_label
 @onready var song = $song
+@onready var floating_text = preload("res://scenes/floating_text.tscn")
+
+# prompt data
+var prompts = {
+	3: "Hello, this is 3th beat",
+	30: "Well, 30th right now"
+}
 
 func _ready():
 	add_to_group("bgm")
@@ -28,8 +35,23 @@ func _process(_delta):
 		next_beat += 1
 		beat_label.text = str(next_beat - 1)
 		
+		check_prompt(next_beat - 1)
+		
 	# if at the end of the song, emit one more signal
 	elif next_beat == timings.size():
 		var time_delayed = 60 / tempo
 		await get_tree().create_timer(time_delayed).timeout
 		emit_signal("on_beat")
+
+# check if current beat has a related prompt
+func check_prompt(beat: int):
+	if prompts.has(beat):
+		add_prompt(prompts[beat], 3.0)
+		
+# add the prompt text to the game
+func add_prompt(txt: String, duration: float):
+	var text_inst = floating_text.instantiate()
+	text_inst.set_text_and_colour(txt, Color.WHITE)
+	text_inst.set_time_out(5.0)
+	text_inst.position = Vector3(0, 0.2, -2)
+	add_child(text_inst)
