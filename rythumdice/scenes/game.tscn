@@ -36,7 +36,6 @@ stream = SubResource("AudioStreamWAV_iywne")
 
 [node name="beat_label" type="Label3D" parent="bgm"]
 transform = Transform3D(1, 0, 4.37114e-08, -4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 0.352843, -1.04479)
-visible = false
 text = "BEAT"
 
 [node name="level_generator" parent="." instance=ExtResource("4_u5sy4")]
