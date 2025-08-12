@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://6gy1nvuyk4mt"]
+[gd_scene load_steps=3 format=3 uid="uid://6gy1nvuyk4mt"]
 
-[ext_resource type="Script" uid="uid://bdnpyrnimmfpd" path="res://scripts/floating_text.gd" id="1_45khh"]
+[ext_resource type="Script" path="res://scripts/floating_text.gd" id="1_45khh"]
+[ext_resource type="FontFile" uid="uid://bt106nrgj0pbg" path="res://assets/OpenSans-Semibold.ttf" id="1_vqah5"]
 
 [node name="FloatingText" type="Label3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 text = "test"
+font = ExtResource("1_vqah5")
 script = ExtResource("1_45khh")

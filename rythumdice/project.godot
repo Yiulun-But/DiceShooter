@@ -22,6 +22,10 @@ config/icon="uid://qtsbr8a03s0o"
 
 global="*res://scripts/global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 up={

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c021ahdvymsec"]
+[gd_scene load_steps=4 format=3 uid="uid://c021ahdvymsec"]
 
 [ext_resource type="Script" uid="uid://ce31tf8ldper8" path="res://scripts/score.gd" id="1_8juob"]
+[ext_resource type="FontFile" uid="uid://bt106nrgj0pbg" path="res://assets/OpenSans-Semibold.ttf" id="2_bak1h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8juob"]
 size = Vector3(1.5, 0.5, 0.2)
@@ -12,6 +13,7 @@ script = ExtResource("1_8juob")
 [node name="ScoreIngame" type="Label3D" parent="."]
 modulate = Color(0.881937, 0.881937, 0.881937, 1)
 outline_modulate = Color(0, 0, 0, 0)
+font = ExtResource("2_bak1h")
 font_size = 36
 outline_size = 24
 
@@ -22,12 +24,14 @@ visible = false
 [node name="Title" type="Label3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64474, 0.112172)
 text = "SCORE"
+font = ExtResource("2_bak1h")
 font_size = 48
 
 [node name="ScoreFinal" type="Label3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0942822, 0.100698)
 offset = Vector2(0, 150)
 text = "10000000"
+font = ExtResource("2_bak1h")
 font_size = 128
 outline_size = 28
 
@@ -35,6 +39,7 @@ outline_size = 28
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512521, -0.00379285)
 modulate = Color(0.85, 0.85, 0.85, 1)
 text = "Back to Menu"
+font = ExtResource("2_bak1h")
 font_size = 26
 outline_size = 8
 
