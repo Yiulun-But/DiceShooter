@@ -1,7 +1,7 @@
 {
-	"level_name": "tetris2",
-	"audio": "res://audio/tetris99.mp3",
+	"level_name": "level1",
+	"audio": "res://audio/level1.mp3",
 	"beats_per_die": 1,
-	"bpm": 140,
+	"bpm": 180,
 	"dice": []
 }
