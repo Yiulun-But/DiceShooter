@@ -19,7 +19,7 @@ background_mode = 1
 top_radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iywne"]
-albedo_color = Color(0.1, 0.1, 0.1, 1)
+albedo_color = Color(0.252028, 0.252028, 0.252028, 1)
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_p57ef")
