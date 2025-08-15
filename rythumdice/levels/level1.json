@@ -1,5 +1,5 @@
   {
-	"audio":"res://audio/level1.mp3",
+	"audio":"res://audio/songs/level1.mp3",
 	"beats_per_die":1.0,
 	"bpm":90.0,
 	"dice":[

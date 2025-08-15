@@ -72,3 +72,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.
 mesh = SubResource("QuadMesh_lbo6s")
 surface_material_override/0 = SubResource("StandardMaterial3D_l438t")
 metadata/_edit_lock_ = true
+
+[node name="hitsound" type="AudioStreamPlayer" parent="."]

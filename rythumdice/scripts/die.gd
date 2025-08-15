@@ -3,6 +3,8 @@ extends Node3D
 @export var active: bool = false
 @export var spawn_face: int = 1
 
+@onready var hitsound = $hitsound
+
 var finished = false
 var levelgen
 var next
@@ -73,6 +75,12 @@ func is_complete():
 func rot(axis, angle):
 	var rotation_delta = Quaternion(axis, angle).normalized()
 	target_rot = rotation_delta * target_rot
+	
+func player_action_rotate(axis, angle):
+	rot(axis, angle)
+	global.play_hitsound(hitsound)
+	moves += 1
+	
 
 func _ready():
 	camera   = get_tree().get_nodes_in_group("camera"  )[0]
@@ -100,18 +108,11 @@ func _input(event):
 	if event is not InputEventKey: return
 	if active and not event.echo:
 		var camera_basis = camera.global_transform.basis
-		if event.is_action_pressed("up"   ): 
-			rot(camera_basis.x, -rot_angle)
-			moves += 1
-		if event.is_action_pressed("down" ): 
-			rot(camera_basis.x,  rot_angle)
-			moves += 1
-		if event.is_action_pressed("right"): 
-			rot(camera_basis.y,  rot_angle)
-			moves += 1
-		if event.is_action_pressed("left" ): 
-			rot(camera_basis.y, -rot_angle)
-			moves += 1
+		if event.is_action_pressed("up"   ): player_action_rotate(camera_basis.x, -rot_angle)
+		if event.is_action_pressed("down" ): player_action_rotate(camera_basis.x,  rot_angle)
+		if event.is_action_pressed("right"): player_action_rotate(camera_basis.y,  rot_angle)
+		if event.is_action_pressed("left" ): player_action_rotate(camera_basis.y, -rot_angle)
+
 
 func _on_beat():
 	move_to_next()

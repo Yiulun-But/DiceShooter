@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://khbhhxwimo6e" path="res://scripts/title_cmera.gd" id="5_b3w7a"]
 [ext_resource type="Script" path="res://scripts/canvas_animation.gd" id="6_ia1n6"]
 [ext_resource type="Script" uid="uid://jhy36inqbalf" path="res://scripts/menu_control.gd" id="6_yql1r"]
-[ext_resource type="AudioStream" uid="uid://b3hvu5n203sru" path="res://audio/level1.mp3" id="9_hiwto"]
+[ext_resource type="AudioStream" uid="uid://b3hvu5n203sru" path="res://audio/songs/level1.mp3" id="9_hiwto"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia1n6"]
 albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
