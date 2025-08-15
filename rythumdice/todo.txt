@@ -3,6 +3,7 @@ System changes:
 	- approach circle / hit indicator
 	- early/late indicators (make it show more than just PERFECT!)
 	- move to next die after reaching a 6?
+- variable scrollspeed, so things can slow appear and fast in to match sliding bass
 - fancy movement of the dice and arbitrary patterns to the music/fancy animations
 - in game editor
 

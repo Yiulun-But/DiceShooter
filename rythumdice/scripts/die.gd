@@ -111,8 +111,8 @@ func _process(_delta):
 	transform.basis = Basis(current_rot)
 	
 	# interpolate scale
-	if active: target_scale = 1.1
 	current_scale = lerp(current_scale, target_scale, ROT_SPEED)
+	if active: current_scale = 1.1
 	scale = Vector3.ONE * current_scale
 	
 
