@@ -3,21 +3,17 @@ Jam Feedback todo:
 	- approach circle / hit indicator
 	- early/late indicators
 	- move to next die upon hitting a 6?
+- sound for missing a note
 
 - fancy movement of the dice and arbitrary patterns to the music/fancy animations
 	- support independent dice movement
 - in game editor
 
-Game Feel:
+Other:
 	- make center die pulse to the beat/to player input with flash grow effect
-	- allow for late hits
 	- communicate hit time more clearly
 	- make hold notes (dice rolling along the track? or continuously spinning?)
-	- feedback about hit accuracy (change color based on precision? missed notes fade to dark shade and rotate along axis out of screen)
-	
-Polish:
-	- do a proper count in? (not just red dice)
-	- main menu 
-		- rotatable dice for reference in background
+	- feedback about hit accuracy (change color based on precision?)
+	- missed notes fade to dark shade
 	- leaderboards?
 	- settings for hit offset, etc.
