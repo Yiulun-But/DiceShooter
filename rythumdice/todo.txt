@@ -1,35 +1,23 @@
-Important features:
-	- make scoring system
-	- make ranking system
-	
-	
-	what way to turn it
-	too fast
-	objective not clear
-	
-	instead of gray bar, have a gray circle behind center die that pulses to the beat
-	make score pulse to the beat
-	make center die pulse to the beat/to player input with flash grow effect
-	
+Jam Feedback todo:
+- support arbitrary hit times
+	- approach circle / hit indicator
+	- early/late indicators
+	- move to next die upon hitting a 6?
+
+- fancy movement of the dice and arbitrary patterns to the music/fancy animations
+	- support independent dice movement
+- in game editor
+
 Game Feel:
+	- make center die pulse to the beat/to player input with flash grow effect
 	- allow for late hits
 	- communicate hit time more clearly
-	- communicate hits on subdivisions
-	- make hold notes (dice rolling along a track?)
+	- make hold notes (dice rolling along the track? or continuously spinning?)
 	- feedback about hit accuracy (change color based on precision? missed notes fade to dark shade and rotate along axis out of screen)
 	
 Polish:
 	- do a proper count in? (not just red dice)
-	- coherent visual design
-	- add JUICE
 	- main menu 
 		- rotatable dice for reference in background
-	- leaderboard?
+	- leaderboards?
 	- settings for hit offset, etc.
-	- put dice in a 3d ring instead of a line?
-	
-Content:
-	- make several songs
-	- chart the songs (make into levels)
-	- simple levels to teach concepts
-	- harder levels to test skill
