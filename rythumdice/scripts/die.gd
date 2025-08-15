@@ -10,6 +10,9 @@ var levelgen
 var next
 var camera
 
+var current_scale = 1.
+var target_scale  = 1.
+
 # signal carries score emits when dice is deactivated
 signal dice_finished(best_moves: bool, correct_facing: bool)
 # signal when level is finished
@@ -36,6 +39,14 @@ func move_to_next():
 	# disable controls for this dice and shift over to the next one
 	if active:
 		active = false
+		
+		# play missed animation if note was missed
+		if !is_complete():
+			var camera_basis = camera.global_transform.basis
+			var angle = global.DICE_MISSED_MAX_ANGLE
+			rot(camera_basis.z, deg_to_rad(randf_range(-angle, angle)))
+			target_scale = .9
+		
 		levelgen.target_pos.x -= levelgen.DIE_SPACING
 		
 		# emit the signal for scoring
@@ -99,10 +110,11 @@ func _process(_delta):
 	current_rot     = current_rot.slerp(target_rot, ROT_SPEED)
 	transform.basis = Basis(current_rot)
 	
-	# controls for rotating the dice
-	scale = Vector3.ONE
-	if active:
-		scale = Vector3.ONE * 1.1
+	# interpolate scale
+	current_scale = lerp(current_scale, target_scale, ROT_SPEED)
+	if active: current_scale = 1.1
+	scale = Vector3.ONE * current_scale
+	
 
 func _input(event):
 	if event is not InputEventKey: return
