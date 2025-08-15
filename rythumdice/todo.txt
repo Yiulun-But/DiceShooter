@@ -1,19 +1,14 @@
-Jam Feedback todo:
+System changes:
 - support arbitrary hit times
 	- approach circle / hit indicator
-	- early/late indicators
-	- move to next die upon hitting a 6?
-- sound for missing a note
-
+	- early/late indicators (make it show more than just PERFECT!)
+	- move to next die after reaching a 6?
 - fancy movement of the dice and arbitrary patterns to the music/fancy animations
-	- support independent dice movement
 - in game editor
 
 Other:
-	- make center die pulse to the beat/to player input with flash grow effect
-	- communicate hit time more clearly
-	- make hold notes (dice rolling along the track? or continuously spinning?)
-	- feedback about hit accuracy (change color based on precision?)
-	- missed notes fade to dark shade
-	- leaderboards?
-	- settings for hit offset, etc.
+- make hold notes (dice rolling along the track / continuously spinning?)
+- missed notes fade to dark and play a sound
+- leaderboards?
+- settings for hit offset, etc.
+- level select that previews songs when they're selected
