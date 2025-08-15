@@ -74,7 +74,7 @@ func _hover_on() -> void:
 func _hover_off() -> void:
 	button.modulate = Color(0.85, 0.85, 0.85)   # dim
 
-func _on_area_input(camera, event, position, normal, shape_idx) -> void:
+func _on_area_input(_camera, event, _position, _normal, _shape_idx) -> void:
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_on_button_pressed()
